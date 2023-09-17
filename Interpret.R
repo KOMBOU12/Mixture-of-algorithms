@@ -1,6 +1,6 @@
 # Linkedin and facebook 
-linkedin <- c(16, 9, 13, 5, 2, 17, 14 )
-facebook <- c( 17,  7,  5, 16,  8, 13, 14)
+linkedin <- c(16, 9, 13, 5, 2, 17, 14)
+facebook <- c( 17, 7, 5, 16,  8, 13, 14)
 
 # Define the interpret function
 interpret <- function(num_views) {
@@ -14,6 +14,25 @@ interpret <- function(num_views) {
   }
 }
 
-# Call the interpret function twice
-interpret(linkedin)
-interpret(facebook)6
+
+# Define the interpret_all() function
+# views: vector with data to interpret
+# return_sum: return total number of views on popular days?
+
+interpret_all <- function(views, return_sum=TRUE) {
+  
+  count <- 0
+  for (v in views) {
+     count <- count + interpret(v)
+  }
+
+  if (return_sum) {
+      return(count)
+  } else {
+      return(NULL)
+  }
+}
+
+# Call the interpret_all() function on both linkedin and facebook
+interpret_all(linkedin)
+interpret_all(facebook)
